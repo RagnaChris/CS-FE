@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #000000;
+  background: linear-gradient(45deg, transparent 49%, #223134 49% 51%, transparent 51%), linear-gradient(-45deg, transparent 49%, #223134 49% 51%, transparent 51%);
+  background-size: 3em 3em;
+  opacity: 1;
+}
+
+main h1 {
+  @apply text-2xl font-bold text-gray-100
+}
+
+main h2 {
+  @apply font-bold text-gray-100
+}
+
+.tremor-Card-root {
+  @apply bg-gray-800 ring-gray-700 p-5
+}
+
+.tremor-Card-root p {
+  @apply text-gray-100
+}
+
+.tremor-BadgeDelta-root p {
+  @apply text-emerald-700
+}
+
+.recharts-surface span, .recharts-wrapper p {
+  @apply text-gray-900
+}
+
+.tremor-Legend-root p {
+  @apply text-gray-100
+}
+
+.recharts-surface g text {
+  @apply fill-gray-100
+}
+
