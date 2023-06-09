@@ -66,8 +66,9 @@ export default function VenomConnectWallet({
   if (venomProvider === null) {
     return (
       <Button
-        color={"red"}
         radius={"md"}
+        color="gray.6"
+        bg={"#6b7280"}
         loading={true}
         loaderPosition={"center"}
       ></Button>
@@ -77,11 +78,21 @@ export default function VenomConnectWallet({
   return (
     <>
       {address ? (
-        <Button onClick={disconnectWallet} color={"red.9"} radius={"md"}>
+        <Button
+          onClick={disconnectWallet}
+          radius={"md"}
+          color="gray.6"
+          bg={"#6b7280"}
+        >
           {truncate(address)}
         </Button>
       ) : (
-        <Button onClick={connectWallet} color={"red"} radius={"md"}>
+        <Button
+          onClick={connectWallet}
+          radius={"md"}
+          color="gray.6"
+          bg={"#6b7280"}
+        >
           Connect Wallet
         </Button>
       )}

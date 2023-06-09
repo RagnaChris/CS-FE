@@ -1,27 +1,38 @@
 import NextLink from "next/link";
 
-import { Avatar } from "@mantine/core";
+import { Tooltip } from "@mantine/core";
 import { Card, Grid, Subtitle, Text, Title } from "@tremor/react";
+import { IconPencil } from "@tabler/icons-react";
+import Image from "next/image";
 
 export default function Profile() {
   return (
-    <Card>
+    <Card className={"h-full"}>
       <NextLink
         href={"#"}
         className={"absolute right-4 top-4 float-right hover:underline"}
+        aria-label={"edit profile"}
       >
-        <small>Edit Profile</small>
+        <Tooltip label={"Edit profile"} withArrow>
+          <IconPencil className={"h-5 w-5"} />
+        </Tooltip>
       </NextLink>
-      <div className={"my-5 flex items-center justify-center gap-10"}>
-        <div className={"flex flex-col items-center"}>
-          <Avatar size="lg" alt={"avatar"} radius={9999} />
-          <Title className={"text-base"}>Green Capital</Title>
-        </div>
+      <div className={"mb-5 flex items-center justify-center gap-3"}>
+        <Image
+          src={"/img/business.svg"}
+          alt={"business image"}
+          width={56}
+          height={56}
+          className={"rounded-full"}
+          priority={true}
+        />
         <div>
-          <Title>Rating</Title>
-          <Subtitle>
-            <span className={"text-emerald-300"}>A (98%)</span>
-          </Subtitle>
+          <Title className={"text-base"}>Green Capital</Title>
+          <div className={"flex-co flex"}>
+            <Subtitle>
+              <span className={"text-emerald-300"}>A (98%)</span>
+            </Subtitle>
+          </div>
         </div>
       </div>
 
@@ -36,7 +47,7 @@ export default function Profile() {
         {profile.map((item) => (
           <div key={item.title}>
             <Subtitle className={"leading-5"}>
-              <small>{item.title}</small>
+              <span className={"text-sm"}>{item.title}</span>
             </Subtitle>
             <Title className="truncate text-base">{item.metric}</Title>
           </div>

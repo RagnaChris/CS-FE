@@ -9,19 +9,15 @@ import {
   MantineProvider,
   ColorSchemeProvider,
   type ColorScheme,
-  createEmotionCache,
 } from "@mantine/core";
 
 import Layout from "@/components/layout";
 
-import { Inter, Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-});
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 import { emotionCache } from "@/src/lib/emotionCache";
@@ -46,12 +42,11 @@ export default function App({ Component, pageProps }: AppProps) {
       >
         <MantineProvider
           withGlobalStyles
-          withNormalizeCSS
           emotionCache={emotionCache}
           theme={{
             colorScheme,
-            fontFamily: roboto.style.fontFamily,
-            headings: { fontFamily: roboto.style.fontFamily },
+            fontFamily: poppins.style.fontFamily,
+            headings: { fontFamily: poppins.style.fontFamily },
           }}
         >
           <Layout>

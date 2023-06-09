@@ -1,8 +1,11 @@
+import NextLink from "next/link";
 import { Button } from "@mantine/core";
 
 export default function StartTradingButton() {
   return (
     <Button
+      component={NextLink}
+      href={"/exchange"}
       size={"xl"}
       variant="gradient"
       radius={"md"}

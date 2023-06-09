@@ -31,6 +31,7 @@ export default class _Document extends Document {
       <Html lang="en">
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
+          <meta name="description" content="Carbon Sarhat description here" />
         </Head>
         <body>
           <Main />

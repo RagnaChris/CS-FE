@@ -1,7 +1,9 @@
 import NextLink from "next/link";
 
-import { Avatar } from "@mantine/core";
+import { Tooltip } from "@mantine/core";
 import { Card, Grid, Subtitle, Text, Title } from "@tremor/react";
+import { IconPencil } from "@tabler/icons-react";
+import Image from "next/image";
 
 export default function Profile() {
   return (
@@ -9,11 +11,21 @@ export default function Profile() {
       <NextLink
         href={"#"}
         className={"absolute right-4 top-4 float-right hover:underline"}
+        aria-label={"edit profile"}
       >
-        <small>Edit Profile</small>
+        <Tooltip label={"Edit profile"} withArrow>
+          <IconPencil className={"h-5 w-5"} />
+        </Tooltip>
       </NextLink>
-      <div className={"mb-5 flex flex-col items-center justify-center gap-2"}>
-        <Avatar size="lg" src="/img/avatar.jpg" alt={"avatar"} radius={9999} />
+      <div className={"mb-5 flex items-center justify-center gap-3"}>
+        <Image
+          src={"/img/avatar.jpg"}
+          alt={"user avatar image"}
+          width={56}
+          height={56}
+          className={"rounded-full"}
+          priority={true}
+        />
         <Title className={"text-base"}>Username</Title>
       </div>
 
@@ -28,7 +40,7 @@ export default function Profile() {
         {profile.map((item) => (
           <div key={item.title}>
             <Subtitle className={"leading-5"}>
-              <small>{item.title}</small>
+              <span className={"text-sm"}>{item.title}</span>
             </Subtitle>
             <Title className="truncate text-base">{item.metric}</Title>
           </div>

@@ -6,7 +6,7 @@ export default function CreateProjectButton() {
   return (
     <Button
       component={NextLink}
-      href={"/create-project"}
+      href={"/create-project/new"}
       size={"xl"}
       variant="gradient"
       radius={"md"}

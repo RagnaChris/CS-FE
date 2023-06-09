@@ -3,18 +3,26 @@
 @tailwind utilities;
 
 body {
-  background: #000000;
-  background: linear-gradient(45deg, transparent 49%, #223134 49% 51%, transparent 51%), linear-gradient(-45deg, transparent 49%, #223134 49% 51%, transparent 51%);
-  background-size: 3em 3em;
+  background: #223134;
+  background: radial-gradient(circle, #223134 10%, transparent 11%);
+  background-size: 1.25em 1.25em;
   opacity: 1;
 }
 
+nav .active-link {
+  @apply bg-gray-600 text-gray-100 hover:bg-gray-600
+}
+
+nav .active-link svg {
+  @apply text-gray-100
+}
+
 main h1 {
-  @apply text-2xl font-bold text-gray-100
+  @apply text-2xl font-bold text-gray-50
 }
 
 main h2 {
-  @apply font-bold text-gray-100
+  @apply font-bold text-gray-50
 }
 
 .tremor-Card-root {
@@ -22,7 +30,7 @@ main h2 {
 }
 
 .tremor-Card-root p {
-  @apply text-gray-100
+  @apply text-gray-50
 }
 
 .tremor-BadgeDelta-root p {
@@ -34,10 +42,19 @@ main h2 {
 }
 
 .tremor-Legend-root p {
-  @apply text-gray-100
+  @apply text-gray-50
 }
 
 .recharts-surface g text {
   @apply fill-gray-100
 }
 
+/* Project Details */
+.tremor-ProgressBar-progressBarWrapper {
+  height: 2.5rem;
+  border-radius: 0;
+}
+
+.tremor-ProgressBar-progressBar {
+  border-radius: 0;
+}
