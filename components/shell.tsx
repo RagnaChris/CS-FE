@@ -66,7 +66,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
         </Navbar>
       }
     >
-      <section className={"mx-auto max-w-5xl"}>{children}</section>
+      <section className={"mx-auto max-w-5xl text-gray-50"}>{children}</section>
     </AppShell>
   );
 }

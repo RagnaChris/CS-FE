@@ -19,16 +19,15 @@ export default function CreateProjectPage() {
       </div>
 
       <Grid numColsMd={2} numColsLg={3} className="mt-6 gap-6">
-        <Col numColSpanLg={1}>
-          <div className="space-y-6">
-            <Grid className="gap-6">
-              <CreateProjectButton />
-            </Grid>
-            <Profile />
-          </div>
+        <Col numColSpanMd={3}>
+          <CreateProjectButton />
         </Col>
 
-        <Col numColSpan={1} numColSpanMd={1} numColSpanLg={2}>
+        <Col>
+          <Profile />
+        </Col>
+
+        <Col numColSpanLg={2}>
           <Grid className={"gap-6"}>
             <CarbonOffsets />
             <Totals />

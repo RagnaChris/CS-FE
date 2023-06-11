@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -14,13 +13,13 @@ import {
 } from "@mantine/core";
 import {
   IconSettings,
-  IconReceipt2,
   IconLogout,
   IconHome,
   IconTrendingUp,
-  IconCirclePlus,
   IconSeeding,
   IconClockHour7,
+  IconPlus,
+  IconCurrencyDollar,
 } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
@@ -34,7 +33,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   footer: {
-    paddingTop: theme.spacing.md,
+    paddingTop: theme.spacing.sm,
     marginTop: theme.spacing.md,
     borderTop: `${rem(1)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]
@@ -45,15 +44,14 @@ const useStyles = createStyles((theme) => ({
     ...theme.fn.focusStyles(),
     display: "flex",
     alignItems: "center",
-    textDecoration: "none",
     fontSize: theme.fontSizes.sm,
+    fontWeight: 500,
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[1]
         : theme.colors.gray[7],
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
-    fontWeight: 500,
 
     "&:hover": {
       backgroundColor: "rgb(55 65 81)",
@@ -73,49 +71,21 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[6],
     marginRight: theme.spacing.sm,
   },
-
-  linkActive: {
-    "&, &:hover": {
-      backgroundColor: "rgb(75 85 99)",
-      color: "rgb(243 244 246)",
-      [`& .${getStylesRef("icon")}`]: {
-        color: "rgb(243 244 246)",
-      },
-    },
-  },
 }));
 
 const data = [
   { link: "/", label: "Home", icon: IconHome },
-  { link: "/financing", label: "Financing", icon: IconReceipt2 },
-  { link: "/create-project", label: "Create Project", icon: IconCirclePlus },
-  { link: "/exchange", label: "Exchange", icon: IconTrendingUp },
-  { link: "/offset", label: "Offset Emission", icon: IconSeeding },
-  { link: "/history", label: "History", icon: IconClockHour7 },
+  { link: "financing", label: "Financing", icon: IconCurrencyDollar },
+  { link: "create-project", label: "Create Project", icon: IconPlus },
+  { link: "exchange", label: "Exchange", icon: IconTrendingUp },
+  { link: "offset", label: "Offset Emission", icon: IconSeeding },
+  { link: "history", label: "History", icon: IconClockHour7 },
 ];
 
 export default function AppNavbar() {
   const { pathname } = useRouter();
 
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState("");
-
-  useEffect(() => {
-    setActive(pathname);
-  }, [pathname]);
-
-  const links = data.map((item) => (
-    <NextLink
-      className={cx(classes.link, {
-        [classes.linkActive]: item.link === active,
-      })}
-      href={item.link}
-      key={item.label}
-    >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </NextLink>
-  ));
 
   return (
     <Navbar width={{ lg: 225 }} p="sm" bg={"rgb(31 41 55)"}>
@@ -125,9 +95,9 @@ export default function AppNavbar() {
             <NextLink href={"/"}>
               <Image
                 src={"/img/logo.png"}
-                alt={"logo"}
-                width={200}
-                height={57}
+                alt={"Carbon Sarhat logo"}
+                width={256}
+                height={147}
                 priority={true}
               />
             </NextLink>
@@ -136,15 +106,30 @@ export default function AppNavbar() {
       </MediaQuery>
 
       <Navbar.Section grow component={ScrollArea}>
-        {links}
+        {data.map((item) => (
+          <NextLink
+            className={cx(
+              classes.link,
+              item.link === "/"
+                ? pathname === item.link && `active-link`
+                : pathname.startsWith(`/${item.link}`) && `active-link`
+            )}
+            href={item.link === "/" ? `/` : `/${item.link}`}
+            key={item.label}
+          >
+            <item.icon className={classes.linkIcon} stroke={1.5} />
+            <span>{item.label}</span>
+          </NextLink>
+        ))}
       </Navbar.Section>
 
       <Navbar.Section className={classes.footer}>
         <NextLink
           href="/settings"
-          className={cx(classes.link, {
-            [classes.linkActive]: "/settings" === active,
-          })}
+          className={cx(
+            classes.link,
+            pathname === `/settings` && `active-link`
+          )}
         >
           <IconSettings className={classes.linkIcon} stroke={1.5} />
           <span>Settings</span>

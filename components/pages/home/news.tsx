@@ -24,8 +24,8 @@ export default function News() {
               <Image
                 src={"/img/news.jpg"}
                 alt={"news"}
-                width={400}
-                height={300}
+                width={540}
+                height={360}
                 className={"h-auto w-full rounded-md"}
                 priority={true}
               />

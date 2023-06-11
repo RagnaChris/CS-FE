@@ -11,18 +11,18 @@ export default function SortSelect() {
         { value: "here", label: "here" },
       ]}
       styles={() => ({
-        item: {
+        /*  item: {
           "&[data-selected]": {
             "&, &:hover": {
               backgroundColor: "#374151",
             },
           },
-        },
+        },*/
         input: {
           backgroundColor: "#1f2937",
-          "&:focus": {
+          /* "&:focus": {
             borderColor: "#374151",
-          },
+          },*/
         },
       })}
     />

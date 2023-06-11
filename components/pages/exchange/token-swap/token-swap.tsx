@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import NextLink from "next/link";
 
 import { Button, NumberInput } from "@mantine/core";
-import { Card, Title } from "@tremor/react";
+import { Card } from "@tremor/react";
 import { IconArrowDown } from "@tabler/icons-react";
+import AdvancedOptions from "@/components/pages/exchange/token-swap/advanced-options";
 
 export default function TokenSwap() {
   const [usdcValue, setUsdcValue] = useState<number | "">("");
@@ -29,8 +30,11 @@ export default function TokenSwap() {
   }, [tokenValue]);
 
   return (
-    <Card className={"space-y-7"}>
-      <Title className={"mb-3"}>Swap</Title>
+    <Card className={"space-y-7 rounded-tl-none border border-gray-700 ring-0"}>
+      <div className={"flex items-end justify-between"}>
+        <h2>Swap</h2>
+        <AdvancedOptions />
+      </div>
       <div className={"relative"}>
         <NumberInput
           value={usdcValue}
@@ -69,7 +73,7 @@ export default function TokenSwap() {
         />
       </div>
       <div className={"flex flex-col justify-center gap-3"}>
-        <Button color={"red.9"} radius={"md"}>
+        <Button radius={"md"} color="gray.6" bg={"#6b7280"}>
           Connect Wallet
         </Button>
         <div className={"text-center"}>

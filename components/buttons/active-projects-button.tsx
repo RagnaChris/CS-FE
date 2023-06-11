@@ -1,8 +1,12 @@
+import NextLink from "next/link";
+
 import { Button } from "@mantine/core";
 
 export default function ActiveProjectsButton() {
   return (
     <Button
+      component={NextLink}
+      href={"/create-project/projects"}
       size={"xl"}
       variant="gradient"
       radius={"md"}

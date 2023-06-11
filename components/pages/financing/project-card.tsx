@@ -31,8 +31,8 @@ export default function ProjectCard() {
       <Grid numCols={2} className="mt-4 gap-4">
         <div>
           <Subtitle className={"flex items-center gap-2 leading-5"}>
-            <small>Project Type</small>
-            <Tooltip label={"info here"}>
+            <span className={"text-sm"}>Project Type</span>
+            <Tooltip label={"info here"} withArrow>
               <IconInfoCircle className={"h-5 w-5"} />
             </Tooltip>
           </Subtitle>
@@ -41,22 +41,22 @@ export default function ProjectCard() {
 
         <div>
           <Subtitle className={"leading-5"}>
-            <small>Financing</small>
+            <span className={"text-sm"}>Financing</span>
           </Subtitle>
           <Title className="truncate text-base">$ 1,000,000</Title>
         </div>
 
         <div>
           <Subtitle className={"leading-5"}>
-            <small>Region</small>
+            <span className={"text-sm"}>Region</span>
           </Subtitle>
           <Title className="truncate text-base">S Asia</Title>
         </div>
 
         <div>
           <Subtitle className={"flex items-center gap-2 leading-5"}>
-            <small>Class</small>
-            <Tooltip label={"info here"}>
+            <span className={"text-sm"}>Class</span>
+            <Tooltip label={"info here"} withArrow>
               <IconInfoCircle className={"h-5 w-5"} />
             </Tooltip>
           </Subtitle>
