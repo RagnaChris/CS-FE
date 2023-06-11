@@ -151,7 +151,7 @@ export default function AppNavbar() {
         </NextLink>
 
         <a
-          href="#"
+          href="/authorization"
           className={classes.link}
           onClick={(event) => event.preventDefault()}
         >

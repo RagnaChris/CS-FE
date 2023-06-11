@@ -41,3 +41,7 @@ main h2 {
   @apply fill-gray-100
 }
 
+.required-label::after {
+  content: '*';
+  color: red;
+}
