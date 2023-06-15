@@ -17,7 +17,7 @@
     "@mantine/hooks": "^6.0.13",
     "@mantine/next": "^6.0.13",
     "@tabler/icons-react": "^2.20.0",
-    "@tremor/react": "^2.9.1",
+    "@tremor/react": "^3.0.1",
     "everscale-inpage-provider": "^0.3.61",
     "everscale-standalone-client": "^2.1.19",
     "next": "13.4.4",

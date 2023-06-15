@@ -1,4 +1,7 @@
+import { type ReactElement } from "react";
 import Head from "next/head";
+
+import Layout from "@/components/pages/dashboard/layout";
 
 export default function _404Page() {
   return (
@@ -13,3 +16,7 @@ export default function _404Page() {
     </>
   );
 }
+
+_404Page.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

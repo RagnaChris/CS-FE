@@ -1,62 +1,58 @@
-import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
-import { Card, Col, Grid, Metric, Text } from "@tremor/react";
+import { useState } from "react";
 
-import Balance from "@/components/pages/home/balance";
-import Profile from "@/components/pages/home/profile";
-import StartTradingButton from "@/components/buttons/start-trading-button";
-import CreateProjectButton from "@/components/buttons/create-project-button";
-import Charts from "@/components/pages/home/charts";
-import { Change, TotalFinancing } from "@/components/pages/home/stats";
-import News from "@/components/pages/home/news";
-
-export default function HomePage() {
+export default function LandingPage() {
   return (
-    <section className={"space-y-10"}>
-      <Head>
-        <title>Home - Carbon Sarhat</title>
-      </Head>
+    <div
+      className={
+        "min-h-screen min-w-full bg-[url('/img/Landing_page_background.png')] bg-cover pl-20"
+      }
+    >
       <div>
-        <h1>Home</h1>
-        <h2>Account Overview</h2>
+        <Image
+          src={"/img/logo.png"}
+          alt={"Carbon Sarhat logo"}
+          width={256}
+          height={147}
+          priority={true}
+        />
       </div>
 
-      <Grid numColsMd={2} numColsLg={3} className="mt-6 gap-6">
-        <Col numColSpanLg={1}>
-          <div className="space-y-6">
-            <Balance />
-            <Profile />
+      <div className="relative my-32 grid grid-cols-2 items-end">
+        <div className="relative col-span-1">
+          <input
+            className="bg-transparent text-white border-b-2 mb-2"
+            id="email"
+            placeholder="Enter your Email"
+          /><br />
+          <label htmlFor="email">Hear from us</label>
+        </div>
+        <div className="col-span-1">
+          <h2 className="text-4xl font-thin">Carbon Sarhat,</h2>
+          <h1 className="text-3xl">POWERING GLOBAL SUSTAINABLE INVESTMENT</h1>
+          <div className="mt-5">
+            <Link
+              href={"/authorization"}
+              className="mr-10 w-48 rounded-full border bg-transparent px-10"
+            >
+              Log In
+            </Link>
+            <Link
+              href={"/authorization"}
+              className="w-48 rounded-full border bg-white bg-clip-text px-10"
+            >
+              Sign Up
+            </Link>
           </div>
-        </Col>
-
-        <Col numColSpan={1} numColSpanMd={1} numColSpanLg={2}>
-          <Card className={"h-full"}>
-            <Text>Total Financing</Text>
-            <Metric className={"text-xl"}>$ 123,456,789</Metric>
-
-            <Charts />
-          </Card>
-        </Col>
-
-        <Col numColSpanLg={1}></Col>
-
-        <Col numColSpan={1} numColSpanLg={2}>
-          <TotalFinancing />
-        </Col>
-
-        <Col numColSpanLg={1} className={"self-end"}>
-          <Grid numCols={2} className="gap-6">
-            <CreateProjectButton />
-            <StartTradingButton />
-          </Grid>
-        </Col>
-
-        <Col numColSpan={1} numColSpanLg={2}>
-          <Change />
-        </Col>
-      </Grid>
-
-      <News />
-    </section>
+        </div>
+      </div>
+      <div className="items-end">
+        <Link href={"/"}>Privacy Policy</Link>
+        <Link href={"/"}>Terms of Use</Link>
+        <p>contact@carbonsarhat.com</p>
+      </div>
+    </div>
   );
 }

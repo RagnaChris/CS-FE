@@ -28,7 +28,7 @@ export default class _Document extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" className={"dark"}>
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
           <meta name="description" content="Carbon Sarhat description here" />
