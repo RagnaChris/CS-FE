@@ -10,51 +10,36 @@ body {
 }
 
 nav .active-link {
-  @apply bg-gray-600 text-gray-100 hover:bg-gray-600
+  @apply bg-gray-600 text-gray-100 hover:bg-gray-600;
 }
 
 nav .active-link svg {
-  @apply text-gray-100
+  @apply text-gray-100;
 }
 
 main h1 {
-  @apply text-2xl font-bold text-gray-50
+  @apply text-2xl font-semibold text-gray-50;
 }
 
 main h2 {
-  @apply font-bold text-gray-50
+  @apply text-lg text-gray-50;
 }
 
 .tremor-Card-root {
-  @apply bg-gray-800 ring-gray-700 p-5
-}
-
-.tremor-Card-root p {
-  @apply text-gray-50
-}
-
-.tremor-BadgeDelta-root p {
-  @apply text-emerald-700
-}
-
-.recharts-surface span, .recharts-wrapper p {
-  @apply text-gray-900
-}
-
-.tremor-Legend-root p {
-  @apply text-gray-50
-}
-
-.recharts-surface g text {
-  @apply fill-gray-100
+  @apply p-5;
 }
 
 /* Project Details */
 .tremor-ProgressBar-progressBarWrapper {
-  height: 2.5rem;
+  height: 1.5rem;
   border-radius: 0;
 }
 
 .tremor-ProgressBar-progressBar {
   border-radius: 0;
+}
+
+.required-label::after {
+  content: '*';
+  color: red;
 }
