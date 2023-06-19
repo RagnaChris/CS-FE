@@ -23,10 +23,11 @@ export default function LandingPage() {
       <div className="relative my-32 grid grid-cols-2 items-end">
         <div className="relative col-span-1">
           <input
-            className="bg-transparent text-white border-b-2 mb-2"
+            className="mb-2 border-b-2 bg-transparent text-white"
             id="email"
             placeholder="Enter your Email"
-          /><br />
+          />
+          <br />
           <label htmlFor="email">Hear from us</label>
         </div>
         <div className="col-span-1">
@@ -34,13 +35,13 @@ export default function LandingPage() {
           <h1 className="text-3xl">POWERING GLOBAL SUSTAINABLE INVESTMENT</h1>
           <div className="mt-5">
             <Link
-              href={"/authorization"}
+              href={"/authorization/signin"}
               className="mr-10 w-48 rounded-full border bg-transparent px-10"
             >
               Log In
             </Link>
             <Link
-              href={"/authorization"}
+              href={"/authorization/signup"}
               className="w-48 rounded-full border bg-white bg-clip-text px-10"
             >
               Sign Up
@@ -49,7 +50,9 @@ export default function LandingPage() {
         </div>
       </div>
       <div className="items-end">
-        <Link href={"/"}>Privacy Policy</Link>
+        <Link href={"/"} className="pr-3">
+          Privacy Policy
+        </Link>
         <Link href={"/"}>Terms of Use</Link>
         <p>contact@carbonsarhat.com</p>
       </div>

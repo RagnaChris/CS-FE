@@ -75,8 +75,8 @@ function InstitutionForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3">
+      
         <label htmlFor="selectedRole" className="required-label">
           Select Role
         </label>
@@ -93,9 +93,9 @@ function InstitutionForm() {
             </option>
           ))}
         </select>
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="email" className="required-label">
           Email
         </label>
@@ -106,9 +106,7 @@ function InstitutionForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </div>
-
-      <div>
+      
         <label htmlFor="password" className="required-label">
           Password
         </label>
@@ -119,9 +117,7 @@ function InstitutionForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </div>
-
-      <div>
+      
         <label htmlFor="organizationName" className="required-label">
           Organization Name
         </label>
@@ -132,9 +128,7 @@ function InstitutionForm() {
           onChange={(e) => setOrganizationName(e.target.value)}
           required
         />
-      </div>
-
-      <div>
+      
         <label htmlFor="country" className="required-label">
           Country
         </label>
@@ -151,9 +145,7 @@ function InstitutionForm() {
             </option>
           ))}
         </select>
-      </div>
-
-      <div>
+      
         <label htmlFor="organizationAddress" className="required-label">
           Organization Address
         </label>
@@ -163,9 +155,7 @@ function InstitutionForm() {
           onChange={(e) => setOrganizationAddress(e.target.value)}
           required
         ></textarea>
-      </div>
-
-      <div>
+      
         <label
           htmlFor="organizationRegistrationNumber"
           className="required-label"
@@ -179,9 +169,7 @@ function InstitutionForm() {
           onChange={(e) => setOrganizationRegistrationNumber(e.target.value)}
           required
         />
-      </div>
-
-      <div>
+    
         <label htmlFor="assetsUnderManagement">Assets under management</label>
         <input
           type="text"
@@ -189,9 +177,7 @@ function InstitutionForm() {
           value={assetsUnderManagement}
           onChange={(e) => setAssetsUnderManagement(e.target.value)}
         />
-      </div>
-
-      <div>
+    
         <label htmlFor="investmentTicketPreference">
           Investment ticket preference
         </label>
@@ -206,9 +192,7 @@ function InstitutionForm() {
           <option value="$50 MM - $100 MM">$50 MM - $100 MM</option>
           <option value="Above $100 MM">Above $100 MM</option>
         </select>
-      </div>
-
-      <div>
+    
         <label htmlFor="productPreference">Product preference</label>
         <select
           id="productPreference"
@@ -219,9 +203,7 @@ function InstitutionForm() {
           <option value="Equity finance">Equity finance</option>
           <option value="Debt finance">Debt finance</option>
         </select>
-      </div>
-
-      <div>
+    
         <label htmlFor="regionsOfInterest">Regions of interest</label>
         <input
           type="text"
@@ -229,9 +211,7 @@ function InstitutionForm() {
           value={regionsOfInterest}
           onChange={(e) => setRegionsOfInterest(e.target.value)}
         />
-      </div>
-
-      <div>
+    
         <label htmlFor="sectorOfInterest">Sector of interest</label>
         <select
           id="sectorOfInterest"
@@ -244,9 +224,8 @@ function InstitutionForm() {
           <option value="Forestry">Forestry</option>
           <option value="Carbon credits">Carbon credits</option>
         </select>
-      </div>
-
-      <div>
+    
+    <div className="col-start-1 col-end-3 flex items-center justify-center gap-3">
         <input
           type="checkbox"
           id="termsAgreement"
@@ -257,13 +236,11 @@ function InstitutionForm() {
         <label htmlFor="termsAgreement" className="required-label">
           I Agree to the Platform’s Terms of Use and Terms and Conditions
         </label>
-      </div>
+    </div>
 
-      <div>
-        <a href="/terms-of-use">Terms of Use</a>
-      </div>
-
+<div className="col-start-1 col-end-3 flex items-center justify-center">
       <button type="submit">Submit</button>
+      </div>
     </form>
   );
 }

@@ -17,7 +17,7 @@ export default function SignIn() {
           },
           body: JSON.stringify({
             email: email,
-            password: password
+            password: password,
           }),
         }
       );
@@ -34,8 +34,8 @@ export default function SignIn() {
 
   return (
     <Card>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3">
+        
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -44,9 +44,9 @@ export default function SignIn() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </div>
-        <div>
-          <label htmlFor="password">Email</label>
+        
+        
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
@@ -54,7 +54,9 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </div>
+        <div className="col-start-1 col-end-3 flex items-center justify-center gap-3">
+      <button type="submit">Submit</button>
+    </div>
       </form>
     </Card>
   );

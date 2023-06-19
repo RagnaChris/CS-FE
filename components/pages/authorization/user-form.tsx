@@ -49,8 +49,8 @@ function UserForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3">
+      
         <label htmlFor="email" className="required-label">
           Email
         </label>
@@ -61,9 +61,9 @@ function UserForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="password" className="required-label">
           Password
         </label>
@@ -74,9 +74,9 @@ function UserForm() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="firstName" className="required-label">
           First Name
         </label>
@@ -87,9 +87,9 @@ function UserForm() {
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="lastName" className="required-label">
           Last Name
         </label>
@@ -100,9 +100,9 @@ function UserForm() {
           onChange={(e) => setLastName(e.target.value)}
           required
         />
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="accreditedInvestor" className="required-label">
           Are you an accredited investor
         </label>
@@ -116,9 +116,9 @@ function UserForm() {
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="phoneNumber">Phone Number</label>
         <input
           type="tel"
@@ -126,9 +126,9 @@ function UserForm() {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="country">Country of Residence</label>
         <input
           type="text"
@@ -136,18 +136,18 @@ function UserForm() {
           value={country}
           onChange={(e) => setCountry(e.target.value)}
         />
-      </div>
+      
 
-      <div>
+      
         <label htmlFor="address">Address</label>
         <textarea
           id="address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         ></textarea>
-      </div>
+      
 
-      <div>
+      <div className="col-start-1 col-end-3 flex items-center justify-center gap-3">
         <input
           type="checkbox"
           id="termsAgreement"
@@ -158,13 +158,11 @@ function UserForm() {
         <label htmlFor="termsAgreement" className="required-label">
           I Agree to the Platform’s Terms of Use and Terms and Conditions
         </label>
-      </div>
-
-      <div>
-        <a href="/terms-of-use">Terms of Use</a>
-      </div>
-
+        </div>
+           
+    <div className="col-start-1 col-end-3 flex items-center justify-center gap-3">
       <button type="submit">Submit</button>
+    </div>
     </form>
   );
 }
