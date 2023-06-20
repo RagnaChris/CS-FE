@@ -1,9 +1,11 @@
-import { Select } from "@mantine/core";
 import { FormEvent, useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 type SubRole = string;
 
 function InstitutionForm() {
+  const router = useRouter();
   const [selectedRole, setSelectedRole] = useState("");
   const [subRoles, setSubRoles] = useState<SubRole[]>(["Loading..."]);
   const [email, setEmail] = useState("");
@@ -68,185 +70,178 @@ function InstitutionForm() {
         throw new Error("Failed to submit form");
       }
 
+      const { status, access_token, refresh_token } = await response.json();
+      if (!status) {
+        throw new Error("Failed to submit form");
+      }
+
+      Cookies.set("accessToken", access_token, {
+        secure: true,
+        sameSite: "strict",
+        httpOnly: true,
+      });
+      Cookies.set("refreshToken", refresh_token, {
+        secure: true,
+        sameSite: "strict",
+        httpOnly: true,
+      });
       console.log("Form submitted successfully");
+
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="selectedRole" className="required-label">
-          Select Role
-        </label>
-        <select
-          id="selectedRole"
-          value={selectedRole}
-          onChange={(e) => setSelectedRole(e.target.value)}
-          required
-        >
-          <option value="">-- Select Role --</option>
-          {subRoles.map((subRole) => (
-            <option key={subRole} value={subRole}>
-              {subRole}
-            </option>
-          ))}
-        </select>
-      </div>
+    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-3">
+      <label htmlFor="selectedRole" className="required-label">
+        Select Role
+      </label>
+      <select
+        id="selectedRole"
+        value={selectedRole}
+        onChange={(e) => setSelectedRole(e.target.value)}
+        required
+      >
+        <option value="">-- Select Role --</option>
+        {subRoles.map((subRole) => (
+          <option key={subRole} value={subRole}>
+            {subRole}
+          </option>
+        ))}
+      </select>
 
-      <div>
-        <label htmlFor="email" className="required-label">
-          Email
-        </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
+      <label htmlFor="email" className="required-label">
+        Email
+      </label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
 
-      <div>
-        <label htmlFor="password" className="required-label">
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
+      <label htmlFor="password" className="required-label">
+        Password
+      </label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
 
-      <div>
-        <label htmlFor="organizationName" className="required-label">
-          Organization Name
-        </label>
-        <input
-          type="text"
-          id="organizationName"
-          value={organizationName}
-          onChange={(e) => setOrganizationName(e.target.value)}
-          required
-        />
-      </div>
+      <label htmlFor="organizationName" className="required-label">
+        Organization Name
+      </label>
+      <input
+        type="text"
+        id="organizationName"
+        value={organizationName}
+        onChange={(e) => setOrganizationName(e.target.value)}
+        required
+      />
 
-      <div>
-        <label htmlFor="country" className="required-label">
-          Country
-        </label>
-        <select
-          id="country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
-        >
-          <option value="">-- Select Country --</option>
-          {countryOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      <label htmlFor="country" className="required-label">
+        Country
+      </label>
+      <select
+        id="country"
+        value={country}
+        onChange={(e) => setCountry(e.target.value)}
+        required
+      >
+        <option value="">-- Select Country --</option>
+        {countryOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
 
-      <div>
-        <label htmlFor="organizationAddress" className="required-label">
-          Organization Address
-        </label>
-        <textarea
-          id="organizationAddress"
-          value={organizationAddress}
-          onChange={(e) => setOrganizationAddress(e.target.value)}
-          required
-        ></textarea>
-      </div>
+      <label htmlFor="organizationAddress" className="required-label">
+        Organization Address
+      </label>
+      <textarea
+        id="organizationAddress"
+        value={organizationAddress}
+        onChange={(e) => setOrganizationAddress(e.target.value)}
+        required
+      ></textarea>
 
-      <div>
-        <label
-          htmlFor="organizationRegistrationNumber"
-          className="required-label"
-        >
-          Organization Registration Number
-        </label>
-        <input
-          type="text"
-          id="organizationRegistrationNumber"
-          value={organizationRegistrationNumber}
-          onChange={(e) => setOrganizationRegistrationNumber(e.target.value)}
-          required
-        />
-      </div>
+      <label
+        htmlFor="organizationRegistrationNumber"
+        className="required-label"
+      >
+        Organization Registration Number
+      </label>
+      <input
+        type="text"
+        id="organizationRegistrationNumber"
+        value={organizationRegistrationNumber}
+        onChange={(e) => setOrganizationRegistrationNumber(e.target.value)}
+        required
+      />
 
-      <div>
-        <label htmlFor="assetsUnderManagement">Assets under management</label>
-        <input
-          type="text"
-          id="assetsUnderManagement"
-          value={assetsUnderManagement}
-          onChange={(e) => setAssetsUnderManagement(e.target.value)}
-        />
-      </div>
+      <label htmlFor="assetsUnderManagement">Assets under management</label>
+      <input
+        type="text"
+        id="assetsUnderManagement"
+        value={assetsUnderManagement}
+        onChange={(e) => setAssetsUnderManagement(e.target.value)}
+      />
 
-      <div>
-        <label htmlFor="investmentTicketPreference">
-          Investment ticket preference
-        </label>
-        <select
-          id="investmentTicketPreference"
-          value={investmentTicketPreference}
-          onChange={(e) => setInvestmentTicketPreference(e.target.value)}
-        >
-          <option value="">-- Select Investment Ticket Preference --</option>
-          <option value="$0 - $10MM">$0 - $10MM</option>
-          <option value="$10 MM - $50 MM">$10 MM - $50 MM</option>
-          <option value="$50 MM - $100 MM">$50 MM - $100 MM</option>
-          <option value="Above $100 MM">Above $100 MM</option>
-        </select>
-      </div>
+      <label htmlFor="investmentTicketPreference">
+        Investment ticket preference
+      </label>
+      <select
+        id="investmentTicketPreference"
+        value={investmentTicketPreference}
+        onChange={(e) => setInvestmentTicketPreference(e.target.value)}
+      >
+        <option value="">-- Select Investment Ticket Preference --</option>
+        <option value="$0 - $10MM">$0 - $10MM</option>
+        <option value="$10 MM - $50 MM">$10 MM - $50 MM</option>
+        <option value="$50 MM - $100 MM">$50 MM - $100 MM</option>
+        <option value="Above $100 MM">Above $100 MM</option>
+      </select>
 
-      <div>
-        <label htmlFor="productPreference">Product preference</label>
-        <select
-          id="productPreference"
-          value={productPreference}
-          onChange={(e) => setProductPreference(e.target.value)}
-        >
-          <option value="">-- Select Product Preference --</option>
-          <option value="Equity finance">Equity finance</option>
-          <option value="Debt finance">Debt finance</option>
-        </select>
-      </div>
+      <label htmlFor="productPreference">Product preference</label>
+      <select
+        id="productPreference"
+        value={productPreference}
+        onChange={(e) => setProductPreference(e.target.value)}
+      >
+        <option value="">-- Select Product Preference --</option>
+        <option value="Equity finance">Equity finance</option>
+        <option value="Debt finance">Debt finance</option>
+      </select>
 
-      <div>
-        <label htmlFor="regionsOfInterest">Regions of interest</label>
-        <input
-          type="text"
-          id="regionsOfInterest"
-          value={regionsOfInterest}
-          onChange={(e) => setRegionsOfInterest(e.target.value)}
-        />
-      </div>
+      <label htmlFor="regionsOfInterest">Regions of interest</label>
+      <input
+        type="text"
+        id="regionsOfInterest"
+        value={regionsOfInterest}
+        onChange={(e) => setRegionsOfInterest(e.target.value)}
+      />
 
-      <div>
-        <label htmlFor="sectorOfInterest">Sector of interest</label>
-        <select
-          id="sectorOfInterest"
-          value={sectorOfInterest}
-          onChange={(e) => setSectorOfInterest(e.target.value)}
-        >
-          <option value="">-- Select Sector of Interest --</option>
-          <option value="Renewable energy">Renewable energy</option>
-          <option value="Infrastructure">Infrastructure</option>
-          <option value="Forestry">Forestry</option>
-          <option value="Carbon credits">Carbon credits</option>
-        </select>
-      </div>
+      <label htmlFor="sectorOfInterest">Sector of interest</label>
+      <select
+        id="sectorOfInterest"
+        value={sectorOfInterest}
+        onChange={(e) => setSectorOfInterest(e.target.value)}
+      >
+        <option value="">-- Select Sector of Interest --</option>
+        <option value="Renewable energy">Renewable energy</option>
+        <option value="Infrastructure">Infrastructure</option>
+        <option value="Forestry">Forestry</option>
+        <option value="Carbon credits">Carbon credits</option>
+      </select>
 
-      <div>
+      <div className="col-start-1 col-end-3 flex items-center justify-center gap-3">
         <input
           type="checkbox"
           id="termsAgreement"
@@ -259,11 +254,9 @@ function InstitutionForm() {
         </label>
       </div>
 
-      <div>
-        <a href="/terms-of-use">Terms of Use</a>
+      <div className="col-start-1 col-end-3 flex items-center justify-center">
+        <button type="submit">Submit</button>
       </div>
-
-      <button type="submit">Submit</button>
     </form>
   );
 }

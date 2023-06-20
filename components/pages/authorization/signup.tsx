@@ -1,5 +1,5 @@
 import { Card } from "@tremor/react";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import UserForm from "./user-form";
 import InstitutionForm from "./institution-form";
 
@@ -12,9 +12,9 @@ export default function SignUp() {
 
   return (
     <Card>
-      <div>
-        <label htmlFor="formType">Select Form:</label>
-        <select
+      <div className="grid grid-cols-3 grid-rows-2 gap-3 mb-3">
+        <label htmlFor="formType" className="col-span-2">Select Form</label>
+        <select className="col-span-2"
           id="formType"
           value={selectedForm}
           onChange={(e) => handleFormTypeChange(e.target.value)}
@@ -25,9 +25,7 @@ export default function SignUp() {
       </div>
 
       {selectedForm === "user" && <UserForm />}
-      {selectedForm === "institution" && (
-        <InstitutionForm />
-      )}
+      {selectedForm === "institution" && <InstitutionForm />}
     </Card>
   );
 }
