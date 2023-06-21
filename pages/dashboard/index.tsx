@@ -15,8 +15,16 @@ import {
   TotalFinancing,
 } from "@/components/pages/dashboard/home/stats";
 import News from "@/components/pages/dashboard/home/news";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 export default function HomePage() {
+  const router = useRouter();
+  const accessToken = Cookies.get("accessToken");
+  const refreshToken = Cookies.get("refreshToken");
+  if (!accessToken || !refreshToken) {
+    router.push("/authorization/signin");
+  }
   return (
     <section className={"space-y-10"}>
       <Head>

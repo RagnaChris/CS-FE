@@ -2,6 +2,7 @@ import { Card } from "@tremor/react";
 import Cookies from "js-cookie";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
+import { Notify } from "notiflix";
 
 export default function SignIn() {
   const router = useRouter();
@@ -26,24 +27,25 @@ export default function SignIn() {
       );
 
       if (!response.ok) {
+        Notify.failure("Failed to submit form");
         throw new Error("Failed to submit form");
       }
 
       const { status, access_token, refresh_token } = await response.json();
       if (!status) {
+        Notify.failure("Email or Password is incorrect");
         throw new Error("Failed to submit form");
       }
 
       Cookies.set("accessToken", access_token, {
         secure: true,
         sameSite: "strict",
-        httpOnly: true,
       });
       Cookies.set("refreshToken", refresh_token, {
         secure: true,
         sameSite: "strict",
-        httpOnly: true,
       });
+
       console.log("Form submitted successfully");
 
       router.push("/dashboard");

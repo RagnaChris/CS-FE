@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { Notify } from "notiflix";
 
 function UserForm() {
   const router = useRouter();
@@ -42,23 +43,23 @@ function UserForm() {
       );
 
       if (!response.ok) {
+        Notify.failure("Failed to submit form");
         throw new Error("Failed to submit form");
       }
 
       const { status, access_token, refresh_token } = await response.json();
       if (!status) {
+        Notify.failure("Users already exist");
         throw new Error("Failed to submit form");
       }
 
       Cookies.set("accessToken", access_token, {
         secure: true,
         sameSite: "strict",
-        httpOnly: true,
       });
       Cookies.set("refreshToken", refresh_token, {
         secure: true,
         sameSite: "strict",
-        httpOnly: true,
       });
       console.log("Form submitted successfully");
 
