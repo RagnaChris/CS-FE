@@ -22,6 +22,7 @@
     "everscale-standalone-client": "^2.1.19",
     "js-cookie": "^3.0.5",
     "next": "13.4.4",
+    "notiflix": "^3.2.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "venom-connect": "^1.0.20"
