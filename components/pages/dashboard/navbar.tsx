@@ -83,7 +83,7 @@ const data = [
 ];
 
 export default function AppNavbar() {
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
 
   const { classes, cx } = useStyles();
 
@@ -136,14 +136,26 @@ export default function AppNavbar() {
           <span>Settings</span>
         </NextLink>
 
-        <NextLink
-          href="/authorization"
-          className={classes.link}
-          onClick={(event) => event.preventDefault()}
+        <button
+          className={`${classes.link} w-full`}
+          onClick={async (e) => {
+            e.preventDefault();
+
+            try {
+              await fetch("/api/auth/logout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+              });
+
+              push("/");
+            } catch (err) {
+              console.error(err);
+            }
+          }}
         >
           <IconLogout className={`${classes.linkIcon}`} stroke={1.5} />
           <span>Logout</span>
-        </NextLink>
+        </button>
       </Navbar.Section>
 
       <Navbar.Section className={"mt-5 flex justify-center gap-5"}>
