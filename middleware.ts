@@ -1,5 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+function check_jwt_expiration() {
+  pass
+}
+
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 

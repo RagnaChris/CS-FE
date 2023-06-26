@@ -1,8 +1,8 @@
 import { Card } from "@tremor/react";
-import Cookies from "js-cookie";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { Notify } from "notiflix";
+import setCookies from "./setCookies";
 
 export default function SignIn() {
   const router = useRouter();
@@ -37,14 +37,7 @@ export default function SignIn() {
         throw new Error("Failed to submit form");
       }
 
-      Cookies.set("accessToken", access_token, {
-        secure: true,
-        sameSite: "strict",
-      });
-      Cookies.set("refreshToken", refresh_token, {
-        secure: true,
-        sameSite: "strict",
-      });
+      await setCookies(access_token, refresh_token);
 
       console.log("Form submitted successfully");
 
