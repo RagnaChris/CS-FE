@@ -1,12 +1,34 @@
-@tailwind base;
+@layer tailwind {
+  @tailwind base;
+}
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: #223134;
-  background: radial-gradient(circle, #223134 10%, transparent 11%);
-  background-size: 1.25em 1.25em;
-  opacity: 1;
+/* Base */
+.animated-link {
+  position: relative;
+}
+
+.animated-link:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: white;
+  transition: all 0.15s ease-in-out;
+}
+
+.animated-link:hover:before {
+  width: 100%;
+}
+
+/* /dashboard */
+@media (min-width: 1200px) {
+  .mantine-Navbar-root {
+    z-index: 0 !important; /* allow route progress bar to show above Navbar on lg+ breakpoints */
+  }
 }
 
 nav .active-link {
@@ -17,19 +39,10 @@ nav .active-link svg {
   @apply text-gray-100;
 }
 
-main h1 {
-  @apply text-2xl font-semibold text-gray-50;
-}
-
-main h2 {
-  @apply text-lg text-gray-50;
-}
-
 .tremor-Card-root {
   @apply p-5;
 }
 
-/* Project Details */
 .tremor-ProgressBar-progressBarWrapper {
   height: 1.5rem;
   border-radius: 0;
@@ -40,6 +53,6 @@ main h2 {
 }
 
 .required-label::after {
-  content: '*';
-  color: red;
+  content: "*";
+  color: #fa5252;
 }

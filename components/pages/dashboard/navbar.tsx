@@ -2,6 +2,8 @@ import NextLink from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+import { signOut } from "next-auth/react";
+
 import {
   createStyles,
   Navbar,
@@ -83,8 +85,7 @@ const data = [
 ];
 
 export default function AppNavbar() {
-  const { pathname, push } = useRouter();
-
+  const { pathname } = useRouter();
   const { classes, cx } = useStyles();
 
   return (
@@ -94,7 +95,7 @@ export default function AppNavbar() {
           <Group className={classes.header}>
             <NextLink href={"/dashboard"}>
               <Image
-                src={"/img/logo.png"}
+                src={"/img/logo_white.png"}
                 alt={"Carbon Sarhat logo"}
                 width={256}
                 height={147}
@@ -138,16 +139,9 @@ export default function AppNavbar() {
 
         <button
           className={`${classes.link} w-full`}
-          onClick={async (e) => {
-            e.preventDefault();
-
+          onClick={async () => {
             try {
-              await fetch("/api/auth/logout", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-              });
-
-              push("/");
+              await signOut({ callbackUrl: "/" });
             } catch (err) {
               console.error(err);
             }

@@ -28,10 +28,13 @@ export default class _Document extends Document {
 
   render() {
     return (
-      <Html lang="en" className={"dark"}>
+      <Html lang="en">
         <Head>
           <link rel="shortcut icon" href="/favicon.png" />
-          <meta name="description" content="Carbon Sarhat description here" />
+          <meta
+            name="description"
+            content="Carbon Sarhat - Powering Global Investments"
+          />
         </Head>
         <body>
           <Main />

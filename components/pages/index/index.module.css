@@ -1,0 +1,23 @@
+.index {
+  background-size: cover;
+  background: linear-gradient(
+      332deg,
+      rgba(93, 95, 104, 1) 0%,
+      rgba(67, 84, 130, 1) 100%
+    )
+    no-repeat;
+}
+
+@media (min-width: 768px) {
+  .index {
+    background: url("/img/landing/lines.png"),
+      linear-gradient(
+          332deg,
+          rgba(93, 95, 104, 1) 0%,
+          rgba(67, 84, 130, 1) 100%
+        )
+        no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+  }
+}

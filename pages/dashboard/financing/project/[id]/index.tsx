@@ -18,7 +18,7 @@ export default function ProjectPage() {
         <div>
           <h1>Project</h1>
           <h2>
-            <NextLink href={"/dashboard/financing"}>Back</NextLink>
+            <NextLink href={"/dashboard/financing"}>← Back</NextLink>
           </h2>
         </div>
 
@@ -26,7 +26,7 @@ export default function ProjectPage() {
           <Col numColSpanMd={2}>
             <ProjectDetailsCard />
           </Col>
-          <Col>
+          <Col className={"self-center"}>
             <Profile />
           </Col>
         </Grid>

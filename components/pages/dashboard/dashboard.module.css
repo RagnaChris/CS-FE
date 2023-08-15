@@ -1,0 +1,14 @@
+.dashboard {
+  background: #223134;
+  background: radial-gradient(circle, #223134 1%, transparent 11%);
+  background-size: 1.25em 1.25em;
+  opacity: 1;
+}
+
+.dashboard main h1 {
+  @apply text-2xl font-semibold text-gray-50;
+}
+
+.dashboard main h2 {
+  @apply text-lg text-gray-50;
+}

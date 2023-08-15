@@ -7,7 +7,7 @@ import { IconPencil } from "@tabler/icons-react";
 
 export default function Profile() {
   return (
-    <Card className={"h-full"}>
+    <Card>
       <NextLink
         href={"#"}
         className={"absolute right-4 top-4 float-right hover:underline"}
@@ -18,30 +18,32 @@ export default function Profile() {
         </Tooltip>
       </NextLink>
       <div className={"mb-5 flex items-center justify-center gap-3"}>
-        <Image
-          src={"/img/business.svg"}
-          alt={"business image"}
-          width={56}
-          height={56}
-          className={"rounded-full"}
-          priority={true}
-        />
+        <div className={"flex flex-col items-center"}>
+          <Image
+            src={"/img/business.svg"}
+            alt={"business image"}
+            width={96}
+            height={96}
+            className={"mb-2 rounded-full"}
+            priority={true}
+          />
+          <Subtitle>Rating</Subtitle>
+          <Subtitle>
+            <span className={"text-emerald-300"}>A (98%)</span>
+          </Subtitle>
+        </div>
         <div>
-          <Text>Green Capital</Text>
-          <div className={"flex-co flex"}>
-            <Subtitle>
-              <span className={"text-emerald-300"}>A (98%)</span>
-            </Subtitle>
-          </div>
+          <Title>ARPA Inc.</Title>
         </div>
       </div>
 
-      <Subtitle className={"mb-1 border-b pb-1 text-center text-sm"}>
-        About You
+      <Subtitle className={"mb-1 border-b border-gray-500 pb-1 text-center"}>
+        About Developer
       </Subtitle>
       <Text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        ARPA is a leading renewable energy company based out of Toronto, Canada.
+        ARPA has a portfolio of 320 MW across North America and primarily
+        engages in asset management, operations and maintenance.
       </Text>
       <Grid numItems={2} className="mt-4 gap-4 ">
         {profile.map((item) => (
@@ -57,19 +59,19 @@ export default function Profile() {
 
 const profile = [
   {
-    title: "Projects",
-    metric: "3",
+    title: "Project Portfolio",
+    metric: "320 MW",
   },
   {
-    title: "Financed",
-    metric: "$ 1,234,567",
+    title: "Amount Financed",
+    metric: "$400 million",
   },
   {
     title: "Credits Generated",
-    metric: "1,234,567",
+    metric: "N/A",
   },
   {
     title: "Regions",
-    metric: "Region",
+    metric: "N America",
   },
 ];

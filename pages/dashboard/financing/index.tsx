@@ -1,6 +1,7 @@
 import { Fragment, type ReactElement } from "react";
 import Head from "next/head";
 import NextLink from "next/link";
+import type { InferGetServerSidePropsType } from "next";
 
 import Layout from "@/components/pages/dashboard/layout";
 
@@ -9,7 +10,21 @@ import ProjectCard from "@/components/pages/dashboard/financing/project-card";
 import ActiveProjectsButton from "@/components/pages/dashboard/buttons/active-projects-button";
 import SortSelect from "@/components/pages/dashboard/financing/sort-select";
 
-export default function FinancingPage() {
+export async function getServerSideProps() {
+  const response = await fetch(`${process.env.API_URL}/projects/?page_size=25`);
+
+  const { projects } = await response.json();
+
+  return {
+    props: {
+      projects,
+    },
+  };
+}
+
+export default function FinancingPage({
+  projects,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <>
       <Head>
@@ -20,6 +35,7 @@ export default function FinancingPage() {
           <h1>Financing</h1>
           <h2>Featured Projects</h2>
         </div>
+
         <section>
           <Grid numItemsSm={2} numItemsMd={2} numItemsLg={3} className={"mb-6"}>
             <Col numColSpan={1}>
